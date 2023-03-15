@@ -15,6 +15,11 @@ public class BaseHero {
         this.speed = speed;
         this.damage = damage;
     }
+    public void GetDamage(int damage) {
+        if (this.healthPoint - damage > 0) {
+            this.healthPoint -= damage;
+        }
+    }
 
     
 

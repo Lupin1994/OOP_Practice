@@ -8,5 +8,12 @@ public class Spear extends BaseHero{
         this.endurance = 11;
 
     }
+    public int Attack() {
+        int Attack = damage;
+        this.endurance -= 1;
+        if (endurance <= 0) return 0;
+        else return damage;
+    }
+
 
 }
