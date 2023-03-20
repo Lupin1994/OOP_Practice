@@ -1,25 +1,36 @@
 package Units;
 
-public class BaseHero {
+public abstract class BaseHero implements UnitInterface{
 
-    protected String Name;
+    protected  final String NAME;
     protected String Class;
     protected int healthPoint;
     protected int speed;
-    protected int damage;
+    protected static int damage;
 
-    public BaseHero(String name, String class1, int healthPoint, int speed, int damage) {
-        Name = name;
+    public void getName(){
+        System.out.println(NAME);
+    }
+
+
+    public BaseHero(String name , String class1, int healthPoint, int speed, int damage) {
+        NAME = name;
         Class = class1;
         this.healthPoint = healthPoint;
         this.speed = speed;
         this.damage = damage;
     }
-    public void GetDamage(int damage) {
-        if (this.healthPoint - damage > 0) {
-            this.healthPoint -= damage;
-        }
+    @Override
+    public String getInfo() {
+        return "";
     }
+
+    @Override
+    public void step() {
+        System.out.println("Шаг");
+        
+    }
+
 
     
 

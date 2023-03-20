@@ -4,16 +4,20 @@ public class Shooter extends BaseHero{
 
     
     protected int arrows;
-    public Shooter() {
-        super("Apple", "Shooter", 10,12, 14);
+    public Shooter(String name) {
+        super(name,"Shooter", 10,12, 14);
         this.arrows = 20;
     }
-    public int Attack() {
-        int Attack = damage;
-        this.arrows -= 1;
-        if (arrows <= 0) return 0;
-        else return damage;
+    @Override
+    public String getInfo() {
+        return "Shooter";
     }
+    @Override
+    public void step() {
+        System.out.println("Снайпер выстрелил!");
+    }
+
+
 
 
 
