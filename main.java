@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 
 import Units.*;
@@ -18,8 +19,8 @@ public class main {
 
         ArrayList<BaseHero> list = new ArrayList<>();
         ArrayList<BaseHero> list2 = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            switch (new Random().nextInt(7)){
+        for (int i = 0; i < 5; i++) {
+            switch (new Random().nextInt(8)){
                 case 0:
                     list.add(new Archer(getName()));
                     break;
@@ -45,7 +46,7 @@ public class main {
                     list.add(new Wizard(getName()));
                     break;
             }
-            switch (new Random().nextInt(7)){
+            switch (new Random().nextInt(8)){
                 case 0:
                     list2.add(new Archer(getName()));
                     break;
@@ -74,9 +75,29 @@ public class main {
 
         }
 
-        list.forEach(u -> u.getName());
-        System.out.println("-----------------");
-        list2.forEach(u -> u.getName());
+        ArrayList<BaseHero> allUnits = new ArrayList<>();
+        allUnits.addAll(list);
+        allUnits.addAll(list2);
+        allUnits.sort(new Comparator<BaseHero>() {
+            @Override
+            public int compare(BaseHero b1, BaseHero b2){
+                if(b1.getSpeed() == b2.getSpeed())
+                    return 0;
+                else if (b1.getSpeed() > b2.getSpeed())
+                    return 1;
+                else return -1;
+            }
+        });
+        System.out.println(allUnits);
+
+        allUnits.forEach(u -> u.step(list2,list));
+       
+
+        // list.forEach(u -> u.getName());
+        // list.forEach(u -> System.out.println(u.getInfo()));
+        // System.out.println("-----------------");
+        // list2.forEach(u -> u.getName());
+        // list2.forEach(u -> System.out.println(u.getInfo()));
     }
     private static String getName(){
         return Names.values()[new Random().nextInt(Names.values().length)].toString();

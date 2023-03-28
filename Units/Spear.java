@@ -1,10 +1,12 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Spear extends BaseHero{
 
     protected int endurance;
     public Spear(String name) {
-        super(name,"Spear", 15, 10, 12);
+        super(name,"Spear", 10, 4, 4,5);
         this.endurance = 11;
 
     }
@@ -12,7 +14,7 @@ public class Spear extends BaseHero{
     public String getInfo() {
         return "Spear";
     }
-    public void step() {
+    public void step(ArrayList<BaseHero>team, ArrayList<BaseHero> ourteam) {
         System.out.println("Копейщик ударил копьем!");
     }
 
